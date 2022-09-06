@@ -35,7 +35,7 @@ const formasPago = [{
 
 function compraStickers () {
 do {
-    opcion = Number (prompt("SELECCIONE SUS STICKERS: \n 10. Logo Mugiwara \n 9. Luffy \n 8. Zoro \n 7. Goku \n 6. Vegeta \n 5. Kid Buu \n 4. Tanjiro \n 3. Inosuke \n 2. Zenitsu \n 1. IR AL CARRITO \n 0. SALIR"));
+    opcion = Number (prompt("SELECCIONE SUS STICKERS:\n 10. Logo Mugiwara \n 9. Luffy \n 8. Zoro \n 7. Goku \n 6. Vegeta \n 5. Kid Buu \n 4. Tanjiro \n 3. Inosuke \n 2. Zenitsu \n 1. IR AL CARRITO \n 0. SALIR"));
     switch (opcion) {
         case 10:
             arrayDeStickers.push(mugiwara);
@@ -201,7 +201,7 @@ function menuCarrito() {
     } while (opcion !== 0 || opcion === null)
 }
 
-alert("Bienvenido a Anime Stickers \n Seleccione sus stcikers:")
+alert("BIENVENIDOS A ANIME STICKERS 🤩")
 console.log(mugiwara, luffy, zoro, goku, vegeta, kidBuu, tanjiro, inosuke, zenitsu);
 
 
