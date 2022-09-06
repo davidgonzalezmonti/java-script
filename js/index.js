@@ -1,14 +1,14 @@
 const arrayDeStickers = [];
 
-const mugiwara = { nombre: "Luffy", tamaño: "10x10", precio: 200 }
-const luffy = { nombre: "Luffy", tamaño: "8x8", precio: 150 }
-const zoro = { nombre: "Zoro", tamaño: "8x8", precio: 150 }
-const goku = { nombre: "Goku", tamaño: "8x8", precio: 150 }
-const vegeta = { nombre: "Vegeta", tamaño: "6x6", precio: 120 }
-const kidBuu = { nombre: "Kid Buu", tamaño: "6x6", precio: 120 }
-const tanjiro = { nombre: "Tanjiro", tamaño: "8x8", precio: 150 }
-const inosuke = { nombre: "Inosuke", tamaño: "6x6", precio: 120 }
-const zenitsu = { nombre: "Zenitsu", tamaño: "6x6", precio: 120 }
+const mugiwara = { nombre: "Luffy", tamaño: "10x10", precio: 200 };
+const luffy = { nombre: "Luffy", tamaño: "8x8", precio: 150 };
+const zoro = { nombre: "Zoro", tamaño: "8x8", precio: 150 };
+const goku = { nombre: "Goku", tamaño: "8x8", precio: 150 };
+const vegeta = { nombre: "Vegeta", tamaño: "6x6", precio: 120 };
+const kidBuu = { nombre: "Kid Buu", tamaño: "6x6", precio: 120 };
+const tanjiro = { nombre: "Tanjiro", tamaño: "8x8", precio: 150 };
+const inosuke = { nombre: "Inosuke", tamaño: "6x6", precio: 120 };
+const zenitsu = { nombre: "Zenitsu", tamaño: "6x6", precio: 120 };
 
 const THIRTY = 30;
 const TWENTY = 20;
@@ -99,7 +99,7 @@ do {
             alert("Seleccione una opcion correcta");
             break;
     }
-} while (opcion !== 0 || opcion === null)
+} while (opcion !== 0 || opcion === null);
 }
 
 const cuotas = (total, interes) => {
@@ -110,7 +110,7 @@ const cuotas = (total, interes) => {
 }
 
 function calculoCuotas () {
-    total = arrayDeStickers.reduce ((articulo, precios) => articulo + precios.precio, 0)
+    total = arrayDeStickers.reduce ((articulo, precios) => articulo + precios.precio, 0);
                 console.log("Total a pagar sin interes: $" + total);
                 formasPago.forEach(x => {
                     console.log("Total con " + x.cuotas + " cuotas: $" + cuotas(total, x.interes).total);
@@ -121,7 +121,7 @@ function calculoCuotas () {
 function precioFinal(cant, interes) {
     console.log("DETALLE DE SU COMPRA: \n");
     console.table(arrayDeStickers);
-    const total = arrayDeStickers.reduce ((articulo, precios) => articulo + precios.precio, 0)
+    const total = arrayDeStickers.reduce ((articulo, precios) => articulo + precios.precio, 0);
     if(cant > 1) {
         console.log("Total a pagar con " + cant + " cuotas: $" + cuotas(total, interes).total);
         console.log("En " + cant + " cuotas de $" + cuotas(total, interes).total / cant + " con un interes de $" + cuotas(total, interes).interes);
