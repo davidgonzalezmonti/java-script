@@ -1,6 +1,6 @@
 const arrayDeStickers = [];
 
-const mugiwara = { nombre: "Luffy", tamaño: "10x10", precio: 200 };
+const mugiwara = { nombre: "Mugiwara", tamaño: "10x10", precio: 200 };
 const luffy = { nombre: "Luffy", tamaño: "8x8", precio: 150 };
 const zoro = { nombre: "Zoro", tamaño: "8x8", precio: 150 };
 const goku = { nombre: "Goku", tamaño: "8x8", precio: 150 };
@@ -31,6 +31,17 @@ const formasPago = [{
     interes: 1
 }
 ];
+
+function carritoDom () {
+    for (const personaje of arrayDeStickers) {
+        const item = document.createElement("ul");
+        item.innerHTML = `<h2>${personaje.nombre}</h2> 
+                          <li>Tamaño: ${personaje.tamaño}</li>
+                          <li>Precio: ${personaje.precio}</li>
+                          `
+    
+        contenedor.append(item)}
+}
 
 
 function compraStickers () {
@@ -119,15 +130,21 @@ function calculoCuotas () {
 }
 
 function precioFinal(cant, interes) {
-    console.log("DETALLE DE SU COMPRA: \n");
-    console.table(arrayDeStickers);
+    // console.log("DETALLE DE SU COMPRA: \n");
+    // console.table(arrayDeStickers);
     const total = arrayDeStickers.reduce ((articulo, precios) => articulo + precios.precio, 0);
-    if(cant > 1) {
-        console.log("Total a pagar con " + cant + " cuotas: $" + cuotas(total, interes).total);
-        console.log("En " + cant + " cuotas de $" + cuotas(total, interes).total / cant + " con un interes de $" + cuotas(total, interes).interes);
+    const resultado = document.createElement("div")
+        carritoDom();
+    
+    if(cant > 1){
+        resultado.innerHTML = `<h3>Total a pagar con ${cant} cuotas: $ ${cuotas(total, interes).total}</h3>
+                               <p>En ${cant} cuotas de $ ${cuotas(total, interes).total / cant} con un interes de $ ${cuotas(total, interes).interes}</p> `
+    contenedor.append(resultado)
     } else {
-        console.log("Total a pagar: $" + total);
-    }
+            resultado.innerHTML = `<h3>Total a pagar: $ ${total}</h3>`
+            contenedor.append(resultado)
+        }
+    
     alert("Gracias por su compra ❤️".toUpperCase());  
 }
 
@@ -176,9 +193,8 @@ function menuCarrito() {
         opcion = Number(prompt("Seleccione una opcion: \n 1. Visualizar carrito \n 2. Eliminar del carrito \n 3. Calcular cuotas \n 4. Volver a comprar \n 0. Finalizar y pagar"));
         switch (opcion) {
             case 1:
-                console.clear();
-        console.log("DETALLES DE SU CARRITO: \n");
-                console.table(arrayDeStickers);
+carritoDom();
+                
                 break;
             case 2:
                 eliminarCarrito();
@@ -202,7 +218,22 @@ function menuCarrito() {
 }
 
 alert("BIENVENIDOS A ANIME STICKERS 🤩")
-console.log(mugiwara, luffy, zoro, goku, vegeta, kidBuu, tanjiro, inosuke, zenitsu);
+// console.log(mugiwara, luffy, zoro, goku, vegeta, kidBuu, tanjiro, inosuke, zenitsu);
 
+const contenedor = document.getElementById("contenedor")
 
 compraStickers();
+
+
+// const personajes = document.getElementById("articulos")
+
+// for (const personaje of arrayDeStickers) {
+//     const item = document.createElement("section");
+//     item.innerHTML = `<h2>${personaje.nombre}</h2>
+//     <ul>
+//     <li>Tamaño: ${personaje.tamaño}</li>
+//     <li>Precio: ${personaje.precio}</li>
+//     </ul>`
+
+//     personajes.append(item)
+// }
