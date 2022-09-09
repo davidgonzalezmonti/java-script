@@ -32,17 +32,6 @@ const formasPago = [{
 }
 ];
 
-function carritoDom () {
-    for (const personaje of arrayDeStickers) {
-        const item = document.createElement("ul");
-        item.innerHTML = `<h2>${personaje.nombre}</h2> 
-                          <li>Tamaño: ${personaje.tamaño}</li>
-                          <li>Precio: ${personaje.precio}</li>
-                          `
-    
-        contenedor.append(item)}
-}
-
 
 function compraStickers () {
 do {
@@ -130,12 +119,11 @@ function calculoCuotas () {
 }
 
 function precioFinal(cant, interes) {
-    // console.log("DETALLE DE SU COMPRA: \n");
-    // console.table(arrayDeStickers);
     const total = arrayDeStickers.reduce ((articulo, precios) => articulo + precios.precio, 0);
     const resultado = document.createElement("div")
         carritoDom();
-    
+    resultado.className = "precioFinal"
+
     if(cant > 1){
         resultado.innerHTML = `<h3>Total a pagar con ${cant} cuotas: $ ${cuotas(total, interes).total}</h3>
                                <p>En ${cant} cuotas de $ ${cuotas(total, interes).total / cant} con un interes de $ ${cuotas(total, interes).interes}</p> `
@@ -144,8 +132,10 @@ function precioFinal(cant, interes) {
             resultado.innerHTML = `<h3>Total a pagar: $ ${total}</h3>`
             contenedor.append(resultado)
         }
+
+        resultado.innerHTML= `<h5>¡Gracias por tu compra!</h5>`
+        contenedor.append(resultado)
     
-    alert("Gracias por su compra ❤️".toUpperCase());  
 }
 
 
@@ -166,15 +156,19 @@ function menuCuotas() {
         valor = Number (prompt("En cuantas cuotas lo queres pagar? \n 12 cuotas con recargo del 30% \n 6 cuotas con recargo del 20% \n 3 cuotas con recargo del 10% \n 1 cuota sin interes \n 0. Salir sin comprar"));
         switch (valor) {
             case 12:
+                mensaje();
                 precioFinal(12, THIRTY);
                 break;
             case 6:
+                mensaje();
                 precioFinal(6, TWENTY);
                 break;
             case 3:
+                mensaje();
                 precioFinal(3, FIFTEEN);
                 break;
             case 1:
+                mensaje();
                 precioFinal(1, 1);
                 break;
             case 0:
@@ -200,15 +194,13 @@ carritoDom();
                 eliminarCarrito();
                 break;
             case 3:
-                console.clear();
                 calculoCuotas ();
                 break;
             case 4:
                 compraStickers();
                 break;
             case 0:
-                console.clear();
-                menuCuotas()
+                menuCuotas();
                 break;
             default:
                 alert("Seleccione una opcion correcta");
@@ -218,22 +210,29 @@ carritoDom();
 }
 
 alert("BIENVENIDOS A ANIME STICKERS 🤩")
-// console.log(mugiwara, luffy, zoro, goku, vegeta, kidBuu, tanjiro, inosuke, zenitsu);
 
-const contenedor = document.getElementById("contenedor")
+const contenedor = document.querySelector("#contenedor")
+const stickersDom = document.querySelector(".stickers")
+const detallesCompra = document.querySelector(".detallesCompra")
+
+function carritoDom () {
+    arrayDeStickers.forEach(x => { 
+        const item = document.createElement("div");
+        item.innerHTML = `<h2>${x.nombre}</h2>
+                          <ul>
+                          <li>Tamaño: ${x.tamaño}</li>
+                          <li>Precio: ${x.precio}</li>
+                          </ul> `
+        stickersDom.appendChild(item);
+    });
+}
+
+
+const mensaje = () => {
+    const titulo = document.createElement("div");
+                titulo.innerHTML = `DETALLES DE SU COMPRA`
+                detallesCompra.append(titulo);
+}
+
 
 compraStickers();
-
-
-// const personajes = document.getElementById("articulos")
-
-// for (const personaje of arrayDeStickers) {
-//     const item = document.createElement("section");
-//     item.innerHTML = `<h2>${personaje.nombre}</h2>
-//     <ul>
-//     <li>Tamaño: ${personaje.tamaño}</li>
-//     <li>Precio: ${personaje.precio}</li>
-//     </ul>`
-
-//     personajes.append(item)
-// }
