@@ -26,6 +26,12 @@
     padding: 10px;
 }
 
+.msjSalirSinComprar{
+    text-align: center;
+    font-size: 50px;
+    background-color: #00fff3;
+}
+
 /* --------FIN DOM------ */
 .contenido {
     display: flex;
